@@ -9,5 +9,6 @@ def setUp():
     config_data = ParserUtils.parse_json("../config/config.json")
     driver = DriverManager.get_driver()
     driver.get(config_data["url"])
+    driver.maximize_window()
     yield
     DriverManager.close_driver()
