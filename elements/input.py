@@ -1,10 +1,10 @@
 from selenium.webdriver.common.by import By
 
-from elements.BaseElement import BaseElement
+from elements.element import Element
 from managers.DriverManager import DriverManager
 
 
-class Input(BaseElement):
+class Input(Element):
     def __init__(self, locator, name):
         super().__init__(locator, name)
 

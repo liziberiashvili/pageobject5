@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from managers.DriverManager import DriverManager
 
 
-class BaseElement:
+class Element:
 
     def __init__(self, locator, name):
         self.locator = locator
