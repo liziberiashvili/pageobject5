@@ -32,3 +32,6 @@ class Element:
 
     def get_text_from_attribute(self, name):
         return DriverManager.get_driver().find_element(By.XPATH, self.locator).get_attribute(name)
+
+    def is_enabled(self):
+        return DriverManager.get_driver().find_element(By.XPATH, self.locator).is_enabled()

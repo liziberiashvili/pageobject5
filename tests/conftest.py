@@ -4,7 +4,7 @@ from managers.DriverManager import DriverManager
 from utils.ParserUtils import ParserUtils
 
 
-@pytest.fixture(autouse=True, scope="class")
+@pytest.fixture(autouse=True, scope="function")
 def setUp():
     config_data = ParserUtils.parse_json("../config/config.json")
     driver = DriverManager.get_driver()
