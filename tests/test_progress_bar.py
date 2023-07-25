@@ -10,8 +10,8 @@ class TestProgressBarFlexible:
         progress_bar_page.wait_for_progress_bar_value()
         progress_bar_page.click_stop_button().click()
 
-        #assert progress_bar_page.wait_for_progress_bar_value(), "Progress bar did not stop at 30%"
+        assert progress_bar_page.wait_for_progress_bar_value(), "shecdoma"
 
-
-
-
+        # assert TestProgressBarFlexible
+        # if not TestProgressBarFlexible:
+        #     raise "armushaobs"

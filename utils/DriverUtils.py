@@ -20,7 +20,7 @@ class DriverUtils:
 
     @staticmethod
     def wait_for_changes(locator, attribute, text):
-        WebDriverWait(DriverManager.get_driver(), timeout=15, poll_frequency=0.0001)\
+        WebDriverWait(DriverManager.get_driver(), timeout=15, poll_frequency=0.1)\
             .until(expected_conditions.text_to_be_present_in_element_attribute(locator, attribute, text))
 
     @staticmethod

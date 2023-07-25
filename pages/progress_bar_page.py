@@ -17,8 +17,9 @@ class ProgressBarPage:
 
         locator = By.XPATH, self.__progress_bar_value.locator
         attribute = "aria-valuenow"
-        text = '30'
+        text = '50'
         DriverUtils.wait_for_changes(locator, attribute, text)
+
 
     def click_stop_button(self):
         return self.__stop_button.find_element()
