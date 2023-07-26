@@ -6,20 +6,20 @@ from elements.input import Input
 
 
 class WebTablePage:
-    __add_data = Button("//button[@id='addNewRecordButton']", "add_data")
-    __edit_data = Button("//span[@id='edit-record-4']//*[name()='svg']", "edit_data")
-    __delete_data = Button(
+    __add_data = Button(By.XPATH, "//button[@id='addNewRecordButton']", "add_data")
+    __edit_data = Button(By.XPATH, "//span[@id='edit-record-4']//*[name()='svg']", "edit_data")
+    __delete_data = Button(By.XPATH,
         "//span[@id='delete-record-4']//*[name()='svg']//*[name()='path' and contains(@d,'M864 256H7')]",
         "delete_data_")
-    __add_info_modal_body = Element("//div[@class='modal-body']", "modal_body")
-    __first_name_field = Input("//input[@id='firstName']", "firstname")
-    __last_name_field = Input("//input[@id='lastName']", "lastname")
+    __add_info_modal_body = Element(By.XPATH, "//div[@class='modal-body']", "modal_body")
+    __first_name_field = Input(By.XPATH, "//input[@id='firstName']", "firstname")
+    __last_name_field = Input(By.XPATH, "//input[@id='lastName']", "lastname")
     __email_field = Input(By.XPATH, "//input[@id='userEmail']", "email")
     __age_field = Input(By.XPATH, "//input[@id='age']", "age")
     __salary_field = Input(By.XPATH, "//input[@id='salary']", "salary")
     __department_field = Input(By.XPATH, "//input[@id='department']", "department")
-    __submit_button = Button("//button[@id='submit']", "submit-button")
-    __edit_info_modal_body = Element("//div[@class='modal-body']", "edit_info_modal_body")
+    __submit_button = Button(By.XPATH, "//button[@id='submit']", "submit_button")
+    __edit_info_modal_body = Element(By.XPATH, "//div[@class='modal-body']", "edit_info_modal_body")
     __email_xpath = "//div[normalize-space()='{}']"
 
     def click_add_button(self):
@@ -59,5 +59,5 @@ class WebTablePage:
         return self.__delete_data.click()
 
     def is_email_visible(self, value):
-        email_element = Element(self.__email_xpath.format(value), "Email")
+        email_element = Element(By.XPATH, self.__email_xpath.format(value), "Email")
         return email_element.is_visible()
