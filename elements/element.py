@@ -35,3 +35,6 @@ class Element:
 
     def is_enabled(self):
         return DriverManager.get_driver().find_element(By.XPATH, self.locator).is_enabled()
+
+    def clear(self):
+        return DriverManager.get_driver().find_element(By.XPATH, self.locator).clear()

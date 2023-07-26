@@ -16,11 +16,12 @@ class TestRegistration:
         registration.password_fild().send_keys(password)
         registration.check_box_button().click()
         registration.sing_up_button().click()
-        assert registration.product_element_main_page().is_displayed()
+
         registration.profile_drop_down_button().click()
         registration.sing_out_button().click()
         registration.sing_in_button().click()
         registration.email_fild_2().send_keys(email)
         registration.password_fild_2().send_keys(password)
         registration.sing_in_button_2().click()
+        assert registration.product_element_main_page().is_displayed()
         assert registration.product_element_main_page_2().is_displayed()

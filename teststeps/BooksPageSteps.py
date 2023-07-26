@@ -8,8 +8,4 @@ class BooksPageSteps:
         if is_displayed == 0 and len(elements) != 0:
             return True
 
-list1 = [1, 2, 3, 4, 5]
-
-for i in range(10):
-    print(i)
 
