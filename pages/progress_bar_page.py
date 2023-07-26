@@ -14,7 +14,6 @@ class ProgressBarPage:
         return self.__start_button.find_element()
 
     def wait_for_progress_bar_value(self):
-
         locator = By.XPATH, self.__progress_bar_value.locator
         attribute = "aria-valuenow"
         text = '50'
