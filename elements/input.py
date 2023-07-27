@@ -1,3 +1,4 @@
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
 from elements.element import Element
@@ -14,3 +15,9 @@ class Input(Element):
     def clear_and_fill(self, value):
         DriverManager.get_driver().find_element(By.XPATH, self.locator).clear()
         self.send_text(value)
+
+    def upload_image(self, path):
+        return DriverManager.get_driver().find_element(By.XPATH, self.locator).send_keys(path)
+
+    def press_enter(self):
+        return DriverManager.get_driver().find_element(self.by, self.locator).send_keys(Keys.ENTER)

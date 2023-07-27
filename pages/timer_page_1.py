@@ -8,7 +8,7 @@ from elements.input import Input
 from managers.DriverManager import DriverManager
 
 
-class TimerPage:
+class TimerPage1:
     __timer = Element(By.XPATH, "//div[@class='timer timer--white timer--center']", "timer_element")
     __password_field = Input(By.XPATH, "//input[@placeholder='Choose Password']", "password_field")
     __email_field = Input(By.XPATH, "//input[@placeholder='Your email']", "email_field")
@@ -18,9 +18,13 @@ class TimerPage:
     __checkbox = Button(By.XPATH, "//span[@class='icon icon-check checkbox__check']", "terms_button")
     __next_button = Button(By.XPATH, "//a[normalize-space()='Next']", "next_button")
     __avatar_box = Element(By.XPATH, "//div[@class='avatar-and-interests__avatar-box']", "avatar_box")
+    __personal_details_form = Element(By.XPATH, "//button[normalize-space()='Not really, no']", "personal_details")
 
     def get_text_from_timer(self):
         return self.__timer.get_text()
+
+    def remove_red_header(self):
+        return self.__personal_details_form.click()
 
     def fill_password(self, value):
         return self.__password_field.clear_and_fill(value)

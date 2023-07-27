@@ -1,3 +1,4 @@
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
 from managers.DriverManager import DriverManager
@@ -39,3 +40,5 @@ class Element:
 
     def clear(self):
         DriverManager.get_driver().find_element(self.by, self.locator).clear()
+
+
