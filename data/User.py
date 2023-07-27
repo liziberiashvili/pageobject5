@@ -1,3 +1,4 @@
+
 from dataclasses import dataclass
 
 
@@ -9,3 +10,4 @@ class User:
     age: int
     salary: int
     department: str
+
