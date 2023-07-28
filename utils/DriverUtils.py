@@ -28,4 +28,6 @@ class DriverUtils:
         WebDriverWait(DriverManager.get_driver(), timeout=15)\
             .until(expected_conditions.visibility_of_element_located(locator))
 
-
+    @staticmethod
+    def wait_for_alert_visible():
+        WebDriverWait(DriverManager.get_driver(), timeout=10).until(expected_conditions.alert_is_present())

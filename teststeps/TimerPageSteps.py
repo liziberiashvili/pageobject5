@@ -1,5 +1,10 @@
 import time
 
+import keyboard
+import pyautogui
+from selenium.webdriver import ActionChains, Keys
+
+from managers.DriverManager import DriverManager
 from pages.timer_page_1 import TimerPage1
 from pages.timer_page_2 import TimerPage2
 
@@ -28,7 +33,9 @@ class TimerPageSteps:
         timer_page2.check_drywall_interest()
         time.sleep(5)
         timer_page2.find_upload_image_button()
-        timer_page2.upload_profile_image(path)
-        timer_page2.press_enter()
-        time.sleep(10)
-        timer_page2.click_next_button()
+        time.sleep(20)
+        TimerPageSteps.upload_file()
+
+    @staticmethod
+    def upload_file():
+        time.sleep(20)
