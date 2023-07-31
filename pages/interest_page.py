@@ -6,7 +6,7 @@ from elements.input import Input
 from pages.base_form import BaseForm
 
 
-class TimerPage2(BaseForm):
+class InterestPage(BaseForm):
     __unselect_all_checkbox = Button(By.XPATH, "//label[@for='interest_unselectall']", "unselect_all")
     __interest_purple_checkbox = Button(By.XPATH, "//label[@for='interest_purple']", "purple")
     __interest_cotton_checkbox = Button(By.XPATH, "//label[@for='interest_cotton']", "cotton")
@@ -40,3 +40,8 @@ class TimerPage2(BaseForm):
 
     def click_next_button(self):
         return self.__next_button.click()
+
+
+
+
+

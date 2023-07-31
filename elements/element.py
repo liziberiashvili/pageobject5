@@ -42,3 +42,8 @@ class Element:
         DriverManager.get_driver().find_element(self.by, self.locator).clear()
 
 
+    def multiple_click(self, count):
+        for i in range(count):
+            self.click()
+
+

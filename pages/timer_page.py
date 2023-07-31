@@ -10,7 +10,7 @@ from elements.input import Input
 from managers.DriverManager import DriverManager
 
 
-class TimerPage1:
+class TimerPage:
     __timer = Element(By.XPATH, "//div[@class='timer timer--white timer--center']", "timer_element")
     __password_field = Input(By.XPATH, "//input[@placeholder='Choose Password']", "password_field")
     __email_field = Input(By.XPATH, "//input[@placeholder='Your email']", "email_field")
@@ -26,7 +26,7 @@ class TimerPage1:
         return self.__timer.get_text()
 
     def remove_red_header(self):
-        return self.__personal_details_form.click()
+        self.__personal_details_form.click()
 
     def fill_password(self, value):
         return self.__password_field.clear_and_fill(value)
@@ -38,16 +38,16 @@ class TimerPage1:
         return self.__domain_field.clear_and_fill(value)
 
     def click_dropdown(self):
-        return self.__dropdown.click()
+        self.__dropdown.click()
 
     def click_email_finish(self):
-        return self.__email_finish.click()
+        self.__email_finish.click()
 
     def click_checkbox(self):
-        return self.__checkbox.click()
+        self.__checkbox.click()
 
     def click_next_button(self):
-        return self.__next_button.click()
+        self.__next_button.click()
 
     def avatar_box_is_displayed(self):
         return self.__avatar_box.is_visible()

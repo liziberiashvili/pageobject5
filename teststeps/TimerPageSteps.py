@@ -1,23 +1,20 @@
 import time
 
-import keyboard
 import pyautogui
-from selenium.webdriver import ActionChains, Keys
 
 from managers.DriverManager import DriverManager
-from pages.timer_page_1 import TimerPage1
-from pages.timer_page_2 import TimerPage2
+from pages.timer_page import TimerPage
+from pages.interest_page import InterestPage
 
 
 class TimerPageSteps:
     @staticmethod
-    def fill_registration1(user):
-        timer_page1 = TimerPage1()
+    def fill_registration(user):
+        timer_page1 = TimerPage()
         timer_page1.remove_red_header()
         timer_page1.fill_password(user.password)
         timer_page1.fill_email(user.email)
         timer_page1.fill_domain(user.domain)
-        time.sleep(5)
         timer_page1.click_dropdown()
         timer_page1.click_email_finish()
         timer_page1.click_checkbox()
@@ -25,17 +22,19 @@ class TimerPageSteps:
 
     @staticmethod
     def fill_registration2():
-        timer_page2 = TimerPage2()
-        path = "/Users/lizi/avatar.png"
+        timer_page2 = InterestPage()
         timer_page2.unselect_all_interest()
         timer_page2.check_purple_interest()
         timer_page2.check_cotton_interest()
         timer_page2.check_drywall_interest()
-        time.sleep(5)
         timer_page2.find_upload_image_button()
-        time.sleep(20)
         TimerPageSteps.upload_file()
 
     @staticmethod
     def upload_file():
-        time.sleep(20)
+        image_file_path = r"\C:\Users\ghvti\Downloads\gasashvebi.png"
+        pyautogui.write(image_file_path)
+        pyautogui.press("enter")
+        DriverManager.get_driver().execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        timer_page3 = InterestPage()
+        timer_page3.click_next_button()
