@@ -1,10 +1,11 @@
 import time
 
-import pyautogui
-
-from managers.DriverManager import DriverManager
+from elements import element
+from elements.input import Input
+from pages.personal_details_page import PersonalDetailsPage
 from pages.timer_page import TimerPage
 from pages.interest_page import InterestPage
+from utils.DriverUtils import DriverUtils
 
 
 class TimerPageSteps:
@@ -29,12 +30,27 @@ class TimerPageSteps:
         timer_page2.check_drywall_interest()
         timer_page2.find_upload_image_button()
         TimerPageSteps.upload_file()
+        timer_page2.click_next_button()
 
     @staticmethod
     def upload_file():
-        image_file_path = r"\C:\Users\ghvti\Downloads\gasashvebi.png"
-        pyautogui.write(image_file_path)
-        pyautogui.press("enter")
-        DriverManager.get_driver().execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        timer_page3 = InterestPage()
-        timer_page3.click_next_button()
+        time.sleep(5)
+
+    @staticmethod
+    def fill_personal_details(user2):
+        personal_details_page = PersonalDetailsPage()
+        personal_details_page.fill_first_name(user2.firstname)
+        personal_details_page.check_mrs()
+        personal_details_page.fill_surname(user2.surname)
+        personal_details_page.fill_street(user2.street)
+        personal_details_page.press_number_up(count=2)
+        personal_details_page.move_slider()
+        personal_details_page.fill_zip_code(user2.zipcode)
+        personal_details_page.fill_city(user2.city)
+        personal_details_page.check_georgia_as_a_country()
+        personal_details_page.check_box_button_up()
+        personal_details_page.pick_birth_day(day=11)
+        personal_details_page.pick_month(month="October")
+        personal_details_page.pick_year(year=1998)
+        personal_details_page.pick_gender()
+        personal_details_page.click_next_button()

@@ -14,7 +14,7 @@ class Input(Element):
 
     def clear_and_fill(self, value):
         DriverManager.get_driver().find_element(By.XPATH, self.locator).clear()
-        self.send_text(value)
+        return self.send_text(value)
 
     def upload_image(self, path):
         return DriverManager.get_driver().find_element(By.XPATH, self.locator).send_keys(path)
