@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
@@ -63,19 +65,13 @@ class PersonalDetailsPage:
         slider_button_xpath = "//div[@class='slider__handle']"
         slider_element = DriverManager.get_driver().find_element(By.XPATH, slider_xpath)
         slider_button = DriverManager.get_driver().find_element(By.XPATH, slider_button_xpath)
-        desired_age = 30
+        desired_age = 24
         max_age = 200
         slider_width = slider_element.size['width']
         position = (desired_age / max_age) * slider_width
         action = ActionChains(DriverManager.get_driver())
         action.click_and_hold(slider_button).move_by_offset(position, 0).release().perform()
 
-    # def click_and_hold_slider(self):
-    #     self.__slider.click_and_hold()
-    #
-    # def move_slider_age(self):
-    #     DriverManager.get_driver().implicitly_wait(10)
-    #     self.__slider_age.move_slider()
 
     def fill_zip_code(self, value):
         self.__zip.clear_and_fill(value)
@@ -90,19 +86,20 @@ class PersonalDetailsPage:
     def check_box_button_up(self):
         self.__box_button_up.click()
 
-    def pick_birth_day(self, day):
-        self.__day_drop_down.click()
-        birth_day = Button(By.XPATH, self.__day_picker.format(day), "birth_day")
-        birth_day.click()
 
-    def pick_month(self, month):
+    def pick_birth_day(self):
+        self.__day_drop_down.click()
+        day = Button(By.XPATH, self.__day_picker.format(birth_day), "birth_day")
+        day.click()
+
+    def pick_month(self):
         self.__month_drop_down.click()
-        month = Button(By.XPATH, self.__month.format(month), "month")
+        month = Button(By.XPATH, self.__month.format(birth_month), "month")
         month.click()
 
-    def pick_year(self, year):
+    def pick_year(self):
         self.__year_drop_down.click()
-        year = Button(By.XPATH, self.__year.format(year), "year")
+        year = Button(By.XPATH, self.__year.format(birth_year), "year")
         year.click()
 
     def pick_gender(self):

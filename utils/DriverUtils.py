@@ -1,6 +1,9 @@
+
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+
 
 from managers.DriverManager import DriverManager
 
@@ -29,3 +32,6 @@ class DriverUtils:
     @staticmethod
     def wait_for_alert_visible():
         WebDriverWait(DriverManager.get_driver(), timeout=10).until(expected_conditions.alert_is_present())
+
+
+

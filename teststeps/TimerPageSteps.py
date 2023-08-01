@@ -1,4 +1,5 @@
 import time
+from datetime import datetime, timedelta
 
 from elements import element
 from elements.input import Input
@@ -45,15 +46,25 @@ class TimerPageSteps:
         personal_details_page.fill_street(user2.street)
         personal_details_page.press_number_up(count=2)
         personal_details_page.move_slider()
-        # personal_details_page.click_and_hold_slider()
-        # personal_details_page.move_slider_age()
         time.sleep(3)
         personal_details_page.fill_zip_code(user2.zipcode)
         personal_details_page.fill_city(user2.city)
         personal_details_page.check_georgia_as_a_country()
         personal_details_page.check_box_button_up()
+        TimerPageSteps.calculate_birth_date()
         personal_details_page.pick_birth_day()
         personal_details_page.pick_month()
         personal_details_page.pick_year()
         personal_details_page.pick_gender()
         personal_details_page.click_next_button()
+
+
+    @staticmethod
+    def calculate_birth_date():
+        desired_age = 24
+        current_date = datetime.now()
+        birth_date = current_date - timedelta(days=desired_age * 365)
+        birth_year = birth_date.year
+        birth_month = birth_date.month
+        birth_day = birth_date.day
+        return birth_year, birth_month, birth_day
