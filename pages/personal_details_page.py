@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
 from elements.button import Button
@@ -10,18 +11,21 @@ from utils.DriverUtils import DriverUtils
 
 
 class PersonalDetailsPage:
-    __first_name = Input(By.XPATH, "//div[contains(text(),'First name')]/following-sibling::div", "first_name")
+    __first_name = Input(By.XPATH, "//div[contains(text(),'First name')]/following-sibling::div//input", "first_name")
     __title = Button(By.XPATH, "//div[contains(text(),'Title')]/following-sibling::div", "title")
     __mrs = Button(By.XPATH, "//div[normalize-space()='Mrs']", "Mrs")
-    __surname = Input(By.XPATH, "//div[contains(text(),'Surname')]/following-sibling::div", "surname")
-    __street = Input(By.XPATH, "//div[contains(text(),'Street')]/following-sibling::div", "street")
+    __surname = Input(By.XPATH, "//div[contains(text(),'Surname')]/following-sibling::div//input", "surname")
+    __street = Input(By.XPATH, "//div[contains(text(),'Street')]/following-sibling::div//input", "street")
     __number_button_up = \
         Button(By.XPATH,
                "//div[contains(text(),'Number')]/following-sibling::div//button[contains(@class,'button--up')]",
                "up_button")
-    __slider_age = Slider(By.XPATH, "//div[@class='slider__handle']", "age_slider")
-    __zip = Input(By.XPATH, "//div[contains(text(),'Zip')]/following-sibling::div", "zip")
-    __city = Input(By.XPATH, "//div[contains(text(),'City')]/following-sibling::div", "city")
+    __slider_element = Slider(By.XPATH, "//div[@class='personal-details__td-cell age-property']"
+                                        "//div[@class='personal-details__td-value']", "slider_element")
+    __slider = Slider(By.XPATH, "//div[@class='slider__handle']", "slider")
+    __slider_age = Slider(By.XPATH, "//div[@class='slider__handle' and @style='left: 50%;']", "slider_age")
+    __zip = Input(By.XPATH, "//div[contains(text(),'Zip')]/following-sibling::div//input", "zip")
+    __city = Input(By.XPATH, "//div[contains(text(),'City')]/following-sibling::div//input", "city")
     __country = Button(By.XPATH, "//div[contains(text(),'Country')]/following-sibling::div", "country")
     __georgia = Button(By.XPATH, "//div[@class='flag flag-ge country-dropdown__flag-item']", "georgia")
     __box_button_up = Button(By.XPATH,
@@ -55,9 +59,23 @@ class PersonalDetailsPage:
         self.__number_button_up.multiple_click(count)
 
     def move_slider(self):
-        desired_value = 12.00
-        js_code = f"arguments[0].style.left = '{desired_value}%';"
-        DriverManager.get_driver().execute_script(js_code, Slider)
+        slider_xpath = "//div[@class='personal-details__td-cell age-property']//div[@class='personal-details__td-value']"
+        slider_button_xpath = "//div[@class='slider__handle']"
+        slider_element = DriverManager.get_driver().find_element(By.XPATH, slider_xpath)
+        slider_button = DriverManager.get_driver().find_element(By.XPATH, slider_button_xpath)
+        desired_age = 30
+        max_age = 200
+        slider_width = slider_element.size['width']
+        position = (desired_age / max_age) * slider_width
+        action = ActionChains(DriverManager.get_driver())
+        action.click_and_hold(slider_button).move_by_offset(position, 0).release().perform()
+
+    # def click_and_hold_slider(self):
+    #     self.__slider.click_and_hold()
+    #
+    # def move_slider_age(self):
+    #     DriverManager.get_driver().implicitly_wait(10)
+    #     self.__slider_age.move_slider()
 
     def fill_zip_code(self, value):
         self.__zip.clear_and_fill(value)
